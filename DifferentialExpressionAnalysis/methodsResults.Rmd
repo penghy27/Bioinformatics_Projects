@@ -1,0 +1,48 @@
+---
+title: "methodsResults.Rmd"
+author: "Hsiao-Yu Peng"
+date: "2023/2/16"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    dev: 'svg'
+  md_document:
+    variant: gfm
+bibliography: bibliography.ris
+
+---
+
+
+## Differential Gene Expression Analysis
+
+
+## Method
+
+We used the Aiptasia genome and annotation data to map RNA-Seq reads. The mapped reads were then quantified using Salmon @Patro (Patro et al. 2017) in order to estimate relative abundance. The the Salmon abundance estimates were imported into R using the tximport @Soneson (Soneson, Love, and Robinson 2016). Differential expression analysis was performed using DESeq2 @Love (Love, Huber, and Anders 2014).
+
+1. Build a salmon index from the de-novo transcriptome on Discovery.
+2. Align all the Aip samples to AipIndex using Salmon.
+3. Import the salmon alignment into tximport and then DESeq2 to perform statistical tests to identify differential gene expression. The results were filtered for adjusted p-value (padj < 0.05) and merged with ko pathway and pathway names from two separate files using the merge function in R. The final output file was saved as deAnnotated.csv.
+
+
+## Results 
+ 
+The following table lists the differentially expressed genes between the control and treatment groups with an adjusted p-value less than 0.05. We get 25 unique KOs and 105 rows in deAnnotated.csv file.
+
+
+```{R, echo=FALSE}
+library(knitr)
+deAnnotated <- read.csv("../results/deAnnotated.csv", stringsAsFactors = FALSE)
+#kable(head(deAnnotated, n = 10))
+kable(deAnnotated)
+```
+
+## References
+
+Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.” *Genome Biol* 15 (12): 550–50.
+
+Patro, Rob, Geet Duggal, Michael I. Love, Rafael A. Irizarry, and Carl Kingsford. 2017. “Salmon Provides Fast and Bias-Aware Quantification of Transcript Expression.” *Nat Methods* 14 (4): 417–19.
+
+Soneson, Charlotte, Michael I. Love, and Mark D. Robinson. 2016. “Differential Analyses for RNA-Seq: Transcript-Level Estimates Improve Gene-Level Inferences.” *F1000Res* 4 (February): 1521–1.

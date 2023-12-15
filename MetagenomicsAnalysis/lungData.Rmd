@@ -1,0 +1,154 @@
+---
+title: "Lung Metagenomic Analysis"
+author: "Hsiao-Yu Peng"
+date: "2023-03-28"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Prepare data
+
+```{r message=FALSE, warning=FALSE}
+library(metagenomeSeq)
+data("lungData")
+lungData
+```
+
+### Biom-Format convert to MRexperiment object.
+```{r message=FALSE, warning=FALSE}
+library(biomformat)
+biom_file <- system.file("extdata", "min_sparse_otu_table.biom",
+package = "biomformat") 
+b <- read_biom(biom_file) 
+biom2MRexperiment(b)
+```
+
+### Loading count data
+```{r message=FALSE, warning=FALSE}
+dataDirectory <- system.file("extdata", package="metagenomeSeq")
+lung = loadMeta(file.path(dataDirectory, "CHK_NAME.otus.count.csv"))
+dim(lung$counts)
+```
+
+### loading taxonomy
+```{r message=FALSE, warning=FALSE}
+taxa = read.delim(file.path(dataDirectory, "CHK_otus.taxonomy.csv"), stringsAsFactors = FALSE)
+```
+
+### Loading metadata
+```{r message=FALSE, warning=FALSE}
+clin = loadPhenoData(file.path(dataDirectory, "CHK_clinical.csv"), tran = TRUE)
+ord = match(colnames(lung$counts), rownames(clin))
+clin = clin[ord, ]
+head(clin[1:2, ])
+```
+
+### Creating a MRexperiment object
+
+Annotated data frame with phenoData
+```{r message=FALSE, warning=FALSE}
+phenotypeData = AnnotatedDataFrame(clin)
+phenotypeData
+```
+
+Annotated data frame with OTU number
+```{r message=FALSE, warning=FALSE}
+OTUdata = AnnotatedDataFrame(taxa)
+OTUdata
+```
+
+Function NewMRexperiment takes a count matrix, phenoData (annotated data frame), and feature Data (annotated data frame) as input.
+
+```{r message=FALSE, warning=FALSE}
+obj = newMRexperiment(lung$counts, phenoData = phenotypeData, featureData = OTUdata)
+obj
+```
+
+Phenotype information can be accessed with the phenotypeData and pData methods:
+```{r message=FALSE, warning=FALSE}
+phenoData(obj)
+head(pData(obj), 3)
+```
+
+Feature information can be accessed with the featureData and fData methods:
+```{r message=FALSE, warning=FALSE}
+featureData(obj)
+head(fData(obj)[, -c(2, 10)], 3)
+```
+
+The raw or normalized counts matrix can be accessed with the MRcounts function:
+```{r message=FALSE, warning=FALSE}
+head(MRcounts(obj[, 1:2]))
+```
+
+A MRexperiment-class object can be easily subsetted:
+
+```{r message=FALSE, warning=FALSE}
+featuresToKeep = which(rowSums(obj) >= 100)
+samplesToKeep = which(pData(obj)$SmokingStatus == "Smoker")
+obj_smokers = obj[featuresToKeep, samplesToKeep]
+obj_smokers
+```
+```{r message=FALSE, warning=FALSE}
+head(pData(obj_smokers), 3)
+```
+
+Alternative normalization scaling factors can be accessed or replaced with the normFactors method:
+
+```{r message=FALSE, warning=FALSE}
+head(normFactors(obj))
+
+normFactors(obj) <- rnorm(ncol(obj))
+head(normFactors(obj))
+```
+
+Library sizes (sequencing depth) can be accessed or replaced with the libSize method:
+
+```{r message=FALSE, warning=FALSE}
+head(libSize(obj))
+```
+```{r message=FALSE, warning=FALSE}
+libSize(obj) <- rnorm(ncol(obj))
+head(libSize(obj))
+```
+
+## Normalization
+
+### Calculating normalization factors
+```{r message=FALSE, warning=FALSE}
+data("lungData")
+p = cumNormStatFast(lungData)
+lungData = cumNorm(lungData, p = p)
+```
+
+### Wrech
+```{r message=FALSE, warning=FALSE}
+condition = lungData$SiteSampled
+lungData = wrenchNorm(lungData, condition = condition)
+```
+
+### Exploring data
+```{r message=FALSE, warning=FALSE}
+mat = MRcounts(lungData, norm = TRUE, log=TRUE)[1:5, 1:5]
+exportMat(mat, file = file.path(dataDirectory, "tmp.tsv"))
+exportStats(lungData[, 1:5], file=file.path(dataDirectory, "tmp.tsv"))
+head(read.csv(file = file.path(dataDirectory, "tmp.tsv"), sep="\t"))
+```
+
+## Statistical testing
+### Example using fitFeatureModel for differential abundance testing
+
+```{r message=FALSE, warning=FALSE}
+data("lungData")
+lungData = lungData[, -which(is.na(pData(lungData)$SmokingStatus))]
+lungData = filterData(lungData, present = 30, depth = 1)
+lungData <- cumNorm(lungData, p = 0.5)
+pd <- pData(lungData)
+mod <- model.matrix(~1 + SmokingStatus, data = pd)
+lungres1 = fitFeatureModel(lungData, mod)
+head(MRcoefs(lungres1))
+
+```

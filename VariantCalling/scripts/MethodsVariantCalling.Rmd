@@ -1,0 +1,70 @@
+---
+title: "MethodsVariantCalling.Rmd"
+author: "Hsiao-Yu Peng"
+date: '2023-02-23'
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    dev: 'svg'
+  md_document:
+    variant: gfm
+bibliography: bibliography.ris
+---
+
+## Variant Calling
+
+## Method
+
+We used the "DeepVariant" program to perform variant calling on our NGS data. The variant calling pipeline includes quality trimming and alignment steps. For quality trimming, we used Trimmomatic @Bolger (Bolger, Lohse, and Usadel 2014). For alignment, we used bwa-mem @Li (Li and Durbin 2009). The steps involved in this process are described in more detail below.
+
+1.  Retrieve the reference genome (human, release 27) from the Gencode FTP server. (`getGenome.sh`)
+
+```{bash, code=readLines("getGenome.sh"), echo=TRUE, eval=FALSE}
+```
+
+2.  Retrieve the NGS reads used in the comparison paper. These are available in the SRA under accession SRR6808334 (`getReads.sh`)
+
+```{bash, code=readLines("getReads.sh"), echo=TRUE, eval=FALSE}
+```
+
+3.  Quality trim the reads using Trimmomatic (`trimReads.sh`)
+
+```{bash, code=readLines("trimReads.sh"), echo=TRUE, eval=FALSE}
+```
+
+4.  Index the genome for use by BWA (`indexGenome.sh`)
+
+```{bash, code=readLines("indexGenome.sh"), echo=TRUE, eval=FALSE}
+```
+
+5.  Align the reads using bwa mem (`alignReads.sh`)
+
+```{bash, code=readLines("alignReads.sh"), echo=TRUE, eval=FALSE}
+```
+
+6.  Sort the file created by bwa mem to a sorted bam (`sort.sh`)
+
+```{bash, code=readLines("sort.sh"), echo=TRUE, eval=FALSE}
+```
+
+7.  Index reads (`indexReads.sh`)
+
+```{bash, code=readLines("indexReads.sh"), echo=TRUE, eval=FALSE}
+```
+
+8.  Produce a VCF file using DeepVariant (`runDeepVariant.sh`)
+
+```{bash, code=readLines("runDeepVariant.sh"), echo=TRUE, eval=FALSE}
+```
+
+## References
+
+Bolger, Anthony M., Marc Lohse, and Bjoern Usadel. 2014. “Trimmomatic: A Flexible Trimmer for Illumina Sequence Data.” *Bioinformatics* 30 (15): 2114–20..
+
+Li, Heng, and Richard Durbin. 2009. “Fast and Accurate Short Read Alignment with Burrows-Wheeler Transform.” *Bioinformatics* 25 (14): 1754–60..
+
+McKenna, Aaron, Matthew Hanna, Eric Banks, Andrey Sivachenko, Kristian Cibulskis, Andrew Kernytsky, Kiran Garimella, et al. 2010. “The Genome Analysis Toolkit: A MapReduce Framework for Analyzing Next-Generation DNA Sequencing Data.” *Genome Res* 20 (9): 1297–1303..
+
+Poplin, Ryan, Pi-Chuan Chang, David Alexander, Scott Schwartz, Thomas Colthurst, Alexander Ku, Dan Newburger, et al. 2018. “A Universal SNP and Small-Indel Variant Caller Using Deep Neural Networks.” *Nature Biotechnology* 36 (September): 983..
