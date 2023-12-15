@@ -4,22 +4,22 @@ Author: Hsiao-Yu Peng
 Listed below are the significant academic projects I built during my time at Northeastern University: <br>
 
 - NGS Data Analysis for *Aiptasia pallida*  
-  [NGS Analysis](https://github.com/penghy27/NU-NGS_analysis.git)   <br>
+  [NGS Analysis](https://github.com/penghy27/NGS_analysis) <br>
 
 - Differential Expression Analysis  
-  [DEA](https://github.com/NU-Bioinformatics/module04-penghy27.git)  <br>
+  [DEA](https://github.com/penghy27/Bioinformatics_Projects/tree/main/DifferentialExpressionAnalysis)  <br>
   
 - Variant calling  
-  [Variant Calling](https://github.com/NU-Bioinformatics/module05-penghy27.git) <br>
+  [Variant Calling](https://github.com/penghy27/Bioinformatics_Projects/tree/main/VariantCalling)<br>
   
 - Multiple Sequence Alignment  
-  [Multiple Sequence Alignment](https://github.com/NU-Bioinformatics/module06-penghy27.git) <br>
+  [Multiple Sequence Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/MultipleSequenceAlignment)<br>
   
 - Metagenomics Analysis  
-  [Metagenomics Analysis](https://github.com/NU-Bioinformatics/module09-penghy27.git) <br>
+  [Metagenomics Analysis](https://github.com/penghy27/Bioinformatics_Projects/tree/main/MetagenomicsAnalysis) <br>
   
 - Genome-Wide Association Studies (GWAS)  
-  [GWAS](https://github.com/NU-Bioinformatics/module10-penghy27.git)  <br>
+  [GWAS](https://github.com/penghy27/Bioinformatics_Projects/tree/main/GWAS) <br>
   
 - Cancer Genomics  
-  [Cancer Genomics](https://github.com/NU-Bioinformatics/module11-penghy27.git)<br>
+  [Cancer Genomics](https://github.com/penghy27/Bioinformatics_Projects/tree/main/CancerGenomics)<br>
