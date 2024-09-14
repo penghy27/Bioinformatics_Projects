@@ -3,7 +3,7 @@
 Author: Hsiao-Yu Peng  
 Listed below are the significant academic projects I built during my time at Northeastern University: <br>
 
-- NGS Data Analysis for *Aiptasia pallida*  
+- Comprehensive NGS analysis pipelines
   [NGS Analysis](https://github.com/penghy27/NGS_analysis) <br>
 
 - Differential Expression Analysis  
