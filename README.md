@@ -8,7 +8,7 @@ Skills: **Shell, Python, R, High-Performance Computing Platform**
 
 ## Genomics
 
-- Genomics Assembly
+- Genomics Assembly  
   Performed genome assembly and quality evaluation using Trimmomatic, Spades, and Quast.   
   [Genomics Assebly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/GenomeAssembly) <br>
 
@@ -25,12 +25,12 @@ Skills: **Shell, Python, R, High-Performance Computing Platform**
 
 ## Bulk RNA-seq
 
-Conducted RNA-seq read alignment (GMAP, GSNAP), reference-guided and de novo assembly (Trinity)  
-
 - Short Read Alignment  
+  Conducted RNA-seq read alignment (GMAP, GSNAP)  
 [Short Read Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/ShortReadAlignment) <br>
 
 - Transcriptome Assembly  
+  Reference-guided and de novo assembly (Trinity) 
 [Transcriptome Assembly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/TranscriptomeAssembly) <br>
 
 - Protein Sequence Prediction  
@@ -48,6 +48,7 @@ Conducted RNA-seq read alignment (GMAP, GSNAP), reference-guided and de novo ass
   [Multiple Sequence Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/MultipleSequenceAlignment)<br>
 
 ---
+
   
 - Metagenomics Analysis  
   [Metagenomics Analysis](https://github.com/penghy27/Bioinformatics_Projects/tree/main/MetagenomicsAnalysis) <br>
