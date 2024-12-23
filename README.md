@@ -2,31 +2,43 @@
 
 Author: Hsiao-Yu Peng  
 Listed below are the significant academic projects I built during my time at Northeastern University: <br>
+Skills: **Shell, Python, R, High-Performance Computing Platform** 
 
-- Genomics Assembly  
+---
+
+## Genomics
+
+- Genomics Assembly
+  Performed genome assembly and quality evaluation using Trimmomatic, Spades, and Quast.   
   [Genomics Assebly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/GenomeAssembly) <br>
 
-- Variant calling
+- Variant calling  
   [Variant Calling](https://github.com/penghy27/Bioinformatics_Projects/tree/main/VariantCalling)<br>
 
-- Genome-Wide Association Studies (GWAS)
+- Genome-Wide Association Studies (GWAS)  
   [GWAS](https://github.com/penghy27/Bioinformatics_Projects/tree/main/GWAS) <br>
 
-- Cancer Genomics
+- Cancer Genomics  
   [Cancer Genomics](https://github.com/penghy27/Bioinformatics_Projects/tree/main/CancerGenomics)<br>
 
 ---
 
-- Short Read Alignment
+## Bulk RNA-seq
+
+Conducted RNA-seq read alignment (GMAP, GSNAP), reference-guided and de novo assembly (Trinity)  
+
+- Short Read Alignment  
 [Short Read Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/ShortReadAlignment) <br>
 
-- Transcriptome Assembly
+- Transcriptome Assembly  
 [Transcriptome Assembly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/TranscriptomeAssembly) <br>
 
-- Protein Sequence Prediction
+- Protein Sequence Prediction  
+  Protein Sequence Prediction from Transcriptomes with BLAST and TransDecoder  
 [Protein Sequence Prediction](https://github.com/penghy27/Bioinformatics_Projects/tree/main/ProteinSequenceAnalysis) <br>
 
-- Functional Annotation
+- Functional Annotation  
+  Utilized KEGG databases for comprehensive annotation of protein sequences.  
 [Functional Annotation](https://github.com/penghy27/Bioinformatics_Projects/tree/main/FunctionalAnnotation) <br>
 
 - Differential Expression Analysis  
