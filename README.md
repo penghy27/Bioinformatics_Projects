@@ -30,7 +30,7 @@ Skills: **Shell, Python, R, High-Performance Computing Platform**
 [Short Read Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/ShortReadAlignment) <br>
 
 - Transcriptome Assembly  
-  Reference-guided and de novo assembly (Trinity) 
+  Reference-guided and de novo assembly (Trinity)  
 [Transcriptome Assembly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/TranscriptomeAssembly) <br>
 
 - Protein Sequence Prediction  
