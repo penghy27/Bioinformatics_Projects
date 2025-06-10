@@ -24,25 +24,32 @@ Trimmomatic is a Java-based tool for trimming low-quality bases from sequencing 
 - Input: Raw FASTQ files (data/rawreads/)
 - Output: Trimmed FASTQ files (data/trimmed/)
 
-### 3. Building GMAP Database
+### 3. Building GMAP/GSNAP Database 
 
-**Tool Used: [GMAP](https://academic.oup.com/bioinformatics/article/21/9/1859/409207) (gmap_build command)**
+**Tool Used:** [GMAP](https://academic.oup.com/bioinformatics/article/21/9/1859/409207) `gmap_build` (from the GMAP/GSNAP suite)
 
-We build a GMAP database for the reference genome to optimize the RNA-Seq alignment process. The database is indexed to allow faster alignments. This step involves creating an index of the reference genome and generating a database of known introns using the GFF3 file.
+We build a reference database using `gmap_build` to index the reference genome. This step prepares the reference for efficient and splice-aware alignment with **GSNAP**. The indexed database enables **GSNAP** to perform fast and accurate read mapping by recognizing exon-intron boundaries.
 
 - Script: `AipBuild.sh`
-- Input: Reference genome in FASTA format and GFF3 file
-- Output: Indexed GMAP database
+- Input: Reference genome in FASTA format (e.g., Aiptasia_genome.fa)
+- Optional Input: GFF3 file to generate known splice site information (can be used with --use-splicing)
+- Output: Indexed GMAP/GSNAP database directory
+
+**Note:** GMAP and GSNAP share the same database format. This database must be built once before performing alignment.
+
 
 ### 4. Alignment with GSNAP
 
-**Tool Used: [GSNAP](http://research-pub.gene.com/gmap/) (gsnap command). A Genomic Short-read Nucleotide Alignment Program**
+**Tool Used:**  [GSNAP](http://research-pub.gene.com/gmap/) `gsnap` — Genomic Short-read Nucleotide Alignment Program  
 
-For RNA-Seq data, we align reads to the reference genome using GSNAP, a splice-aware aligner that considers intronic regions during alignment. GSNAP is chosen due to its high alignment accuracy and free, open-source nature. The alignment output is generated in SAM format.
+We use **GSNAP** to align trimmed RNA-seq reads to the reference genome. **GSNAP** is a splice-aware aligner, capable of handling exon–intron boundaries and gapped alignments, making it suitable for eukaryotic RNA-seq data. It uses the database built by gmap_build to support high-performance alignment.
 
 - Script: `alignReads.sh`
-- Input: Trimmed FASTQ files and GMAP database
-- Output: Aligned SAM files
+- Input: Trimmed paired-end FASTQ files and GMAP/GSNAP database
+- Output: Alignment results in SAM format
+
+Note: GSNAP's output can be further processed by SAMtools to convert into sorted BAM files for downstream transcriptome assembly or quantification.
+
 
 ### 5. SAM to BAM Conversion and Sorting
 
