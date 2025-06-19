@@ -1,5 +1,4 @@
 ### module10-penghy27
-### Suthor: Hsiao-Yu Peng (penghy27)
 ### Date: April 7th, 2023
 ### Overview:
 Genome-Wide Association Studies (GWAS) seek to identify associations between genetic variants and diseases or traits. 

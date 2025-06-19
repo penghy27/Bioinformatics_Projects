@@ -1,5 +1,5 @@
 ### module11-penghy27
-### Author: Hsiao-Yu Peng (penghy27)
+
 ### Date: April 14th, 2023
 ### Overview:
 Use maftools ti summarize, analyze and visualize MAF Files.

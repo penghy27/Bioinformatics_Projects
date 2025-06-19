@@ -1,5 +1,4 @@
 # module-06-penghy27  
-Author: penghy27 (Hsiao-Yu Peng)  
 Date: November 7th, 2022  
 Purpose: Assemble the Rhodobacter spheroides genome
 

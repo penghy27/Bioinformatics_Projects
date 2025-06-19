@@ -2,7 +2,6 @@
 module09-penghy27 created by GitHub Classroom
 
 ### module09-penghy27
-### Author: Hsiao-Yu Peng (penghy27)
 ### Date: April 2nd, 2023
 ### Overview:
 Run metagenomics analysis with the library metagenomeSeq, follow the tutorial  https://bioconductor.org/packages/release/bioc/vignettes/metagenomeSeq/inst/doc/metagenomeSeq.pdf and run each chunk of R code until 4.1.1.
