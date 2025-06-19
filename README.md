@@ -1,6 +1,5 @@
 ## Bioinformatics Projects
-
-Author: Hsiao-Yu Peng  
+ 
 Listed below are the significant academic projects I built during my time at Northeastern University: <br>
 Skills: **Shell, Python, R, High-Performance Computing Platform** 
 
@@ -26,11 +25,11 @@ Skills: **Shell, Python, R, High-Performance Computing Platform**
 ## Bulk RNA-seq
 
 - Short Read Alignment  
-  Conducted RNA-seq read alignment (GMAP, GSNAP)  
+  Reference-guided alignment   
 [Short Read Alignment](https://github.com/penghy27/Bioinformatics_Projects/tree/main/ShortReadAlignment) <br>
 
 - Transcriptome Assembly  
-  Reference-guided and de novo assembly (Trinity)  
+  De novo assembly 
 [Transcriptome Assembly](https://github.com/penghy27/Bioinformatics_Projects/tree/main/TranscriptomeAssembly) <br>
 
 - Protein Sequence Prediction  
